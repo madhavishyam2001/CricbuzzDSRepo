@@ -1,0 +1,109 @@
+import requests
+import streamlit as st
+url = "https://cricbuzz-cricket.p.rapidapi.com/stats/v1/player/search"
+
+#querystring = {"plrN":"Tucker"}
+
+headers = {
+	"x-rapidapi-key": "deb0acd51cmsh416de7bed4f927ep13e65ajsn534d62962b2a",
+	"x-rapidapi-host": "cricbuzz-cricket.p.rapidapi.com",
+	"Content-Type": "application/json"
+}
+
+response = requests.get(url, headers=headers, params=querystring)
+
+#response = requests.get(url, headers=headers)
+
+print(response.json())
+
+data = response.json()
+players_data = data.get('data', {}).get('player', [])
+
+for player in data['data']['player']:
+    print(f"Player Name: {player['name']}")
+    print(f"Player ID: {player['id']}")
+    print(f"Player Country: {player['country']}")
+    print(f"Player Role: {player['role']}")
+    print(f"Player Batting Style: {player['battingStyle']}")
+    print(f"Player Bowling Style: {player['bowlingStyle']}")
+    print("-" * 40) 
+
+
+url = "https://cricbuzz-cricket.p.rapidapi.com/stats/v1/player/search"
+
+querystring = {"plrN":"Tucker"}
+
+headers = {
+	"x-rapidapi-key": "deb0acd51cmsh416de7bed4f927ep13e65ajsn534d62962b2a",
+	"x-rapidapi-host": "cricbuzz-cricket.p.rapidapi.com",
+	"Content-Type": "application/json"
+}
+
+response = requests.get(url, headers=headers, params=querystring)
+
+print(response.json())
+
+
+data = response.json()
+print(data.keys())
+
+lenplayers=len(data['player'])
+
+print(f"Total Players: {lenplayers}")
+print("Player Details:")
+i=0 
+for player in data['player']:
+    i += 1
+    print(f"Player {i}")
+    print(f"Player Name: {player['name']}")
+    print(f"Player ID: {player['id']}")
+    print(f"Player teamName: {player['teamName']}")
+    print(f"Player dob: {player['dob']}")
+    print(f"Player faceImageId: {player['faceImageId']}")
+    #print(f"Player Bowling Style: {player['bowlingStyle']}")
+    print("-" * 40) 
+
+#print("Category = ", data['category'])
+
+from turtle import st
+
+
+url = "https://cricbuzz-cricket.p.rapidapi.com/teams/v1/2/schedule"
+
+headers = {
+	"x-rapidapi-key": "deb0acd51cmsh416de7bed4f927ep13e65ajsn534d62962b2a",
+	"x-rapidapi-host": "cricbuzz-cricket.p.rapidapi.com",
+	"Content-Type": "application/json"
+}
+
+response = requests.get(url, headers=headers)
+data_schedule = response.json()
+
+print(len(data_schedule))
+#print("Data Schedule : ", data_schedule)
+print(data_schedule.keys())
+
+#print(data_schedule['teamMatchesData'][0].keys())
+
+#print(len(data_schedule['teamMatchesData']))
+
+print(len(data_schedule['appIndex']))
+
+#print(len(data_schedule['contentFilters']))
+
+matchDetailsMap = data_schedule['teamMatchesData'][0]
+
+#print("Team Matches Data:",data_schedule['teamMatchesData'])
+print("Match Details Map:", matchDetailsMap)
+print("Match Details Map Length:", len(matchDetailsMap))
+
+print("Match Details Map Keys:", matchDetailsMap.keys())
+
+print("Match Details Map Values:", matchDetailsMap.values())
+
+for key, value in matchDetailsMap.items():
+    print(f"{key}: {value}")
+    print("-" * 40)
+    for sub_key, sub_value in value.items():
+        print(f"  {sub_key}: {sub_value}")
+
