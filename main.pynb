@@ -2,7 +2,7 @@ import requests
 import streamlit as st
 url = "https://cricbuzz-cricket.p.rapidapi.com/stats/v1/player/search"
 
-#querystring = {"plrN":"Tucker"}
+querystring = {"plrN":"Tucker"}
 
 headers = {
 	"x-rapidapi-key": "deb0acd51cmsh416de7bed4f927ep13e65ajsn534d62962b2a",
@@ -16,17 +16,17 @@ response = requests.get(url, headers=headers, params=querystring)
 
 print(response.json())
 
-data = response.json()
-players_data = data.get('data', {}).get('player', [])
+#data = response.json()
+#players_data = data.get('data', {}).get('player', [])
 
-for player in data['data']['player']:
-    print(f"Player Name: {player['name']}")
-    print(f"Player ID: {player['id']}")
-    print(f"Player Country: {player['country']}")
-    print(f"Player Role: {player['role']}")
-    print(f"Player Batting Style: {player['battingStyle']}")
-    print(f"Player Bowling Style: {player['bowlingStyle']}")
-    print("-" * 40) 
+#for player in data['data']['player']:
+ #   print(f"Player Name: {player['name']}")
+  #  print(f"Player ID: {player['id']}")
+   # print(f"Player Country: {player['country']}")
+    #print(f"Player Role: {player['role']}")
+    #print(f"Player Batting Style: {player['battingStyle']}")
+    #print(f"Player Bowling Style: {player['bowlingStyle']}")
+    #print("-" * 40) 
 
 
 url = "https://cricbuzz-cricket.p.rapidapi.com/stats/v1/player/search"
