@@ -16,7 +16,7 @@ st.write(f"Hello, {x}!")
 print(f"Hello, {x}!")
 
 enable = st.checkbox("Enable camera")
-picture = st.camera_input("Take your picture", disabled=not enable)
+#picture = st.camera_input("Take your picture", disabled=not enable)
 
-if picture:
-    st.image(picture)
+#if picture:
+#    st.image(picture)
