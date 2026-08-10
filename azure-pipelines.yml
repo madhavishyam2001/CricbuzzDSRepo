@@ -27,6 +27,6 @@ steps:
   displayName: 'Use Python $(python.version)'
 
 - script: |
-    python main.pynb
+    python simpleListprint.py
   displayName: 'Run main program'
 
